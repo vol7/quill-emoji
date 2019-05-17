@@ -122,8 +122,8 @@ function fn_showEmojiPalatte(quill) {
     tabElement.classList.add('filter-'+emojiType.name);
     let tabValue = document.createElement('div');
     tabValue.classList.add('i-'+emojiType.name);
-    tabValue.innerHTML = emojiFilterSvgs[emojiType.name]
-    tabElement.appendChild(tabValue);
+    // tabValue.innerHTML = emojiFilterSvgs[emojiType.name]
+    // tabElement.appendChild(tabValue);
     tabElement.dataset.filter = emojiType.type;
     tabElementHolder.appendChild(tabElement);
 
