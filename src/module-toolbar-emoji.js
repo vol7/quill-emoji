@@ -2,7 +2,6 @@ import Quill from 'quill';
 import Fuse from 'fuse.js';
 import emojiList from './emoji-list.js';
 
-const Delta = Quill.import('delta');
 const Module = Quill.import('core/module');
 
 class ToolbarEmoji extends Module {
@@ -35,7 +34,7 @@ class ToolbarEmoji extends Module {
 }
 
 ToolbarEmoji.DEFAULTS = {
-  buttonIcon: '<svg viewbox="0 0 18 18"><circle class="ql-fill" cx="7" cy="7" r="1"></circle><circle class="ql-fill" cx="11" cy="7" r="1"></circle><path class="ql-stroke" d="M7,10a2,2,0,0,0,4,0H7Z"></path><circle class="ql-stroke" cx="9" cy="9" r="6"></circle></svg>'
+  buttonIcon: '<svg id="quill-emoji-button-icon" viewbox="0 0 18 18"><circle class="ql-fill" cx="7" cy="7" r="1"></circle><circle class="ql-fill" cx="11" cy="7" r="1"></circle><path class="ql-stroke" d="M7,10a2,2,0,0,0,4,0H7Z"></path><circle class="ql-stroke" cx="9" cy="9" r="6"></circle></svg>'
 };
 
 function fn_close(){
@@ -62,19 +61,13 @@ function fn_updateRange(quill){
 function fn_showEmojiPalatte(quill) {
   let ele_emoji_area = document.createElement('div');
   let toolbar_container = document.querySelector('.ql-toolbar');
-  let range = quill.getSelection();
-  const atSignBounds = quill.getBounds(range.index);
+  let toolbarEmojiButton = document.querySelector('#quill-emoji-button-icon');
+  const { x: leftPosition, top, height } = toolbarEmojiButton.getBoundingClientRect()
 
   quill.container.appendChild(ele_emoji_area);
-  let paletteMaxPos = atSignBounds.left + 250;//palette max width is 250
   ele_emoji_area.id = 'emoji-palette';
-  ele_emoji_area.style.top = 10 + atSignBounds.top + atSignBounds.height + "px";
-  if (paletteMaxPos > quill.container.offsetWidth) {
-    ele_emoji_area.style.left = (atSignBounds.left - 250)+ "px";
-  }
-  else{
-    ele_emoji_area.style.left = atSignBounds.left + "px";
-  }
+  ele_emoji_area.style.top = `${top + height}px`;
+  ele_emoji_area.style.left = `${leftPosition}px`;
 
 
   let tabToolbar = document.createElement('div');
