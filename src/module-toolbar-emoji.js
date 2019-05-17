@@ -62,11 +62,12 @@ function fn_showEmojiPalatte(quill) {
   let ele_emoji_area = document.createElement('div');
   let toolbar_container = document.querySelector('.ql-toolbar');
   let toolbarEmojiButton = document.querySelector('#quill-emoji-button-icon');
-  const { x: leftPosition, top, height } = toolbarEmojiButton.getBoundingClientRect()
+  const { top, height } = toolbar_container.getBoundingClientRect()
+  const { x: leftPosition } = toolbarEmojiButton.getBoundingClientRect()
 
   quill.container.appendChild(ele_emoji_area);
   ele_emoji_area.id = 'emoji-palette';
-  ele_emoji_area.style.top = `${top + height + 12}px`;
+  ele_emoji_area.style.top = `${top + height}px`;
   ele_emoji_area.style.left = `${leftPosition}px`;
   ele_emoji_area.style.position = 'fixed';
 
