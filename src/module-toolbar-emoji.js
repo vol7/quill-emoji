@@ -66,8 +66,9 @@ function fn_showEmojiPalatte(quill) {
 
   quill.container.appendChild(ele_emoji_area);
   ele_emoji_area.id = 'emoji-palette';
-  ele_emoji_area.style.top = `${top + height}px`;
+  ele_emoji_area.style.top = `${top + height + 12}px`;
   ele_emoji_area.style.left = `${leftPosition}px`;
+  ele_emoji_area.style.position = 'fixed';
 
 
   let tabToolbar = document.createElement('div');
