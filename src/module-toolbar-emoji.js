@@ -129,7 +129,7 @@ function fn_showEmojiPalatte(quill) {
 
     let emojiFilter = document.querySelector('.filter-'+emojiType.name);
     emojiFilter.addEventListener('click',function(){
-      let tab = document.querySelector('.active');
+      let tab = document.querySelector('.emoji-tab.active');
       if (tab) {
         tab.classList.remove('active');
       }
